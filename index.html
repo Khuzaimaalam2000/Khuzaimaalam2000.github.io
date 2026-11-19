@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khuzaima Alam · Portfolio</title>
+<meta name="description" content="Khuzaima Alam: MS MIS at UIC. Banking systems consultant building and governing production AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: confident, precise, a banking technologist's case file, not a student résumé
+   IDEA: a production ML pipeline: each project is one stage that a bank would actually run
+   PICTURE: a large pipeline drawing (Ingest → Train → Serve → Monitor → Govern) with real numbers from the repos
+   COLOUR and TYPE: black and white, one mint field; Space Grotesk 700 + Inter
+   LAYOUT: hero split (white text half / mint pipeline half), project cards in a 2-col grid, experience as a ledger table */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0a0a0a);--ink:light-dark(#0a0a0a,#f2f2f2);--mute:light-dark(#555,#a8a8a8);--line:light-dark(#e3e3e3,#262626);--mint:#b8f5d0;--mintink:#0a0a0a;--card:light-dark(#fafafa,#121212)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;font-weight:700;line-height:1.08;text-wrap:balance;margin:0}
+h1{font-size:clamp(36px,5vw,52px)}h2{font-size:clamp(28px,3.4vw,38px);margin-bottom:8px}h3{font-size:21px}
+a{color:inherit;text-underline-offset:3px}
+p{margin:0 0 12px;max-width:68ch}
+.band{padding:clamp(32px,5vw,72px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+.lead{font-size:17px;color:var(--mute)}
+html{scroll-padding-top:72px;scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px 22px;align-items:center;flex-wrap:wrap;padding:12px max(5vw,16px)}
+nav b{font-family:"Space Grotesk";font-size:18px;margin-right:auto}
+nav a{text-decoration:none;font-size:15px;color:var(--mute);padding:8px 0}nav a:hover{color:var(--ink)}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:min(88vh,760px)}
+.hero .txt{padding:clamp(32px,5vw,72px) max(5vw,16px);display:flex;flex-direction:column;justify-content:center;gap:18px}
+.hero .pic{background:var(--mint);color:var(--mintink);padding:clamp(24px,3vw,48px);display:flex;flex-direction:column;justify-content:center}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1.5px solid var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+.btn.fill{background:var(--ink);color:var(--bg)}
+.btn:focus-visible,a:focus-visible{outline:3px solid #2bbf74;outline-offset:2px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:15px;color:var(--mute)}.facts b{color:var(--ink);font-family:"Space Grotesk";font-size:22px;display:block}
+.fig{position:relative;min-height:420px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.piccap{font-size:13px;margin-top:10px;opacity:.75}
+/* projects */
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}
+.tag{font-size:13px;padding:3px 9px;border:1px solid var(--line);border-radius:99px;color:var(--mute)}
+.tag.jpm{background:var(--mint);color:var(--mintink);border-color:var(--mint)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:28px}
+.card{background:var(--card);border:1px solid var(--line);padding:24px;display:flex;flex-direction:column}
+.card.feat{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px}
+.card ul{margin:0 0 14px;padding-left:18px}.card li{margin-bottom:6px}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-content:start}
+.kpi{border-top:2px solid var(--ink);padding-top:8px}.kpi b{font-family:"Space Grotesk";font-size:clamp(26px,3vw,34px);display:block;line-height:1.1;white-space:nowrap}.kpi span{font-size:13px;color:var(--mute)}
+.kpis.bk{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:24px}
+.case h3{margin:4px 0 10px}.outs{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
+.outs b{font-family:"Space Grotesk";font-size:24px;display:block;line-height:1.1;white-space:nowrap}.outs span{font-size:13px;color:var(--mute)}
+.roles.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.stack-s{font-size:14px;color:var(--mute);margin-top:auto}
+.links{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-weight:600;font-size:15px}
+.note{font-size:13px;color:var(--mute)}
+/* experience */
+.ledger{width:100%;border-collapse:collapse;margin-top:24px}
+.ledger th{text-align:left;font-size:13px;color:var(--mute);font-weight:500;border-bottom:2px solid var(--ink);padding:8px 12px 8px 0}
+.ledger td{border-bottom:1px solid var(--line);padding:14px 12px 14px 0;vertical-align:top}
+.ledger td:first-child{font-weight:600;width:28%}.ledger td.n{text-align:right;font-family:"Space Grotesk";font-size:20px;white-space:nowrap}
+.roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:28px}
+.role{border-top:2px solid var(--ink);padding-top:12px}.role small{color:var(--mute);display:block;margin-bottom:8px}
+.dark{background:#0a0a0a;color:#f2f2f2}.dark .lead,.dark .note{color:#a8a8a8}
+.skills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:24px}
+.skills h3{font-size:17px;margin-bottom:8px;color:var(--mint)}
+.skills p{font-size:15px;color:#cfcfcf}
+.contact{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:baseline;justify-content:space-between}
+footer{padding:20px max(5vw,16px);font-size:13px;color:var(--mute);border-top:1px solid var(--line)}
+@media(max-width:900px){.kpis.bk{grid-template-columns:repeat(3,minmax(0,1fr))}.roles.two{grid-template-columns:1fr}.hero{grid-template-columns:1fr;min-height:0}.card.feat{grid-template-columns:1fr}.skills{grid-template-columns:repeat(2,minmax(0,1fr))}.roles{grid-template-columns:1fr}}
+@media(max-width:640px){.kpis.bk{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}.fig{min-height:520px}nav a{font-size:14px}}
+@media(max-width:600px){table{font-size:14px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7em;text-align:start!important;width:auto!important}.stack td::before{content:attr(data-l);float:inline-start;width:6.5em;margin-inline-start:-7em;font-size:13px;color:var(--mute);font-weight:400;font-family:Inter}.skills{grid-template-columns:1fr}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+<nav><div class="wrap"><b>Khuzaima Alam</b><a href="#banking">Banking</a><a href="#research">Research</a><a href="#project">Project</a><a href="#experience">Now</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div></nav>
+
+<header class="hero">
+  <div class="txt">
+    <h1>I've shipped core banking systems. Now I build AI that banks can trust in production.</h1>
+    <p class="lead">I'm Syed Muhammad Khuzaima Alam, an MS in Management Information Systems candidate at UIC (3.86 GPA, 2027). Before that I spent two years delivering Temenos core banking implementations for 9 banks across the Middle East, Africa and Asia, including the first T24 core banking system on AWS in the Middle East. Today I build production ML systems (LLM serving, RAG agents, drift monitoring, model governance) and research how to detect cyberattacks run by autonomous AI agents.</p>
+    <div class="facts">
+      <div><b>9 banks</b>core banking engagements</div>
+      <div><b>3+ yrs</b>banking &amp; fintech</div>
+      <div><b>$1.2M</b>change-request revenue won</div>
+    </div>
+    <div class="btns">
+      <a class="btn fill" href="#banking">See my banking work</a><a class="btn" href="#research">Research</a>
+      <a class="btn" href="https://github.com/Khuzaimaalam2000">GitHub</a>
+      <a class="btn" href="https://linkedin.com/in/khuzaimaalam">LinkedIn</a>
+    </div>
+  </div>
+  <div class="pic">
+    <div class="fig" id="pipe" role="img" aria-label="Career path: fintech product, core banking, cloud banking, delivery, AI governance, AI security"><svg></svg></div>
+    <div class="piccap">My path from banking systems to trustworthy AI, with one headline result at each step.</div>
+  </div>
+</header>
+
+<section class="band" id="banking"><div class="wrap">
+  <h2>Banking transformation work</h2>
+  <p class="lead">I spent 2022–2025 at Systems Limited, a Temenos implementation partner, on the project management team for core banking programs: the systems that hold a bank's accounts, ledgers and payments. I owned governance, change control, resourcing and C-level reporting across engagements in the UAE, Qatar, East Africa and Vietnam.</p>
+  <div class="kpis bk">
+    <div class="kpi"><b>9</b><span>banks served</span></div>
+    <div class="kpi"><b>$1.2M</b><span>revenue from change requests, Banque Misr UAE</span></div>
+    <div class="kpi"><b>45%</b><span>project margin, Banque Misr Djibouti &amp; Somalia</span></div>
+    <div class="kpi"><b>−35%</b><span>implementation cycle time, Dukhan Bank</span></div>
+    <div class="kpi"><b>8%</b><span>under budget, Vietnam Prosperity Bank</span></div>
+  </div>
+  <div class="grid" id="cases"></div>
+  <p class="note" style="margin-top:16px">Other engagements: Al Khaliji France, Dubai Islamic Bank, Emirates Development Bank, National Bank of Fujairah, Invest Bank UAE.</p>
+
+  <h3 style="margin-top:40px">Across the program portfolio</h3>
+  <div class="roles" id="portfolio"></div>
+
+  <h3 style="margin-top:40px">Before consulting: fintech product &amp; sales</h3>
+  <div class="roles two" id="fintech"></div>
+</div></section>
+
+<section class="band" id="research" style="border-top:1px solid var(--line)"><div class="wrap">
+  <h2>Research: detecting attacks run by AI agents</h2>
+  <p class="lead">AI agents can now run cyberattacks on their own. My research asks whether we can catch one in the act, at the step where it issues the attack, by fusing the agent's own execution trace with host and network telemetry.</p>
+  <div class="grid">
+    <article class="card feat">
+      <div>
+        <div class="tags"><span class="tag jpm">Risk, Regulation &amp; Responsible AI</span><span class="tag jpm">AI &amp; ML in Financial Services</span><span class="tag jpm">Data Engineering for Agentic Workflows</span></div>
+        <p>I built a research harness in which an autonomous LLM agent (a LangGraph decide/act loop) attacks OWASP Juice Shop, a deliberately vulnerable web app. Each trial records three evidence streams with aligned timestamps: the agent's decisions and tool calls, host syscalls (<code>auditd</code>) and network packets (<code>tcpdump</code>). Step-level Random Forest and XGBoost classifiers then try to flag the attack as early as possible, and I compare them with a rule-based baseline I wrote in Cisco's open-source Project Quarry.</p>
+        <ul>
+          <li><b>510 trials</b> (235 benign, 275 attacks across 13 categories) with an end-to-end pipeline: task generation, trial execution, labeling, feature extraction, training and evaluation</li>
+          <li><b>Rigorous design:</b> each attack is labeled at the step where it was <i>issued</i>, not where it succeeded. Features use only information available at that step, and cross-validation is grouped by trial, so a trial's steps never land in both training and test data.</li>
+          <li><b>Fusion helps:</b> combining both streams gave the best F1 (0.880). System telemetry on its own reached 0.645.</li>
+          <li><b>Lead time:</b> both models catch 98–99% of attacks, with a median detection delay of 0 steps</li>
+          <li><b>Open problem:</b> on attack categories held out of training, recall drops to 21–29%. Access-control attacks such as IDOR, which need context about who owns a resource, defeat every method tested. That points straight at where defenses need work next.</li>
+        </ul>
+        <div class="stack-s">Python · LangGraph · Claude API · scikit-learn · XGBoost · Docker · auditd · tcpdump · Project Quarry</div>
+        <div class="links"><a href="https://github.com/Khuzaimaalam2000/ai-agent-attack-detection">Code on GitHub →</a></div>
+      </div>
+      <div>
+        <div class="kpis">
+          <div class="kpi"><b>0.880</b><span>F1, fused streams (RF)</span></div>
+          <div class="kpi"><b>0.935</b><span>precision, fused (RF)</span></div>
+          <div class="kpi"><b>510</b><span>trials, 13 attack categories</span></div>
+          <div class="kpi"><b>0 steps</b><span>median detection delay</span></div>
+        </div>
+        <table class="ledger" style="margin-top:22px;font-size:14px">
+          <thead><tr><th>Evidence · model</th><th style="text-align:right">F1</th></tr></thead>
+          <tbody id="f1"></tbody>
+        </table>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<section class="band" id="project" style="border-top:1px solid var(--line)"><div class="wrap">
+  <h2>Project: governed LLM operations</h2>
+  <p class="lead">My MLOps capstone at UIC (IDS 568). I wrapped production monitoring and governance around an LLM inference server, then wrote the go/no-go assessment the way a bank's model-risk team would expect to read it.</p>
+  <div class="grid" id="cards"></div>
+</div></section>
+
+<section class="band" id="experience" style="border-top:1px solid var(--line)"><div class="wrap">
+  <h2>Now: UIC &amp; leadership</h2>
+  <div class="roles two" id="roles"></div>
+</div></section>
+
+<section class="band dark" id="skills"><div class="wrap">
+  <h2>Skills &amp; certifications</h2>
+  <div class="skills">
+    <div><h3>ML &amp; GenAI</h3><p>Python, scikit-learn, XGBoost, LangGraph, LangChain, FastAPI, MLflow, Prometheus/Grafana, drift detection (PSI), A/B testing, model governance</p></div>
+    <div><h3>Data &amp; cloud</h3><p>SQL, PySpark, Spark Structured Streaming, Airflow, Snowflake, PostgreSQL, MongoDB, AWS, Azure, GCP Cloud Run, Docker, GitHub Actions, Prometheus, Grafana</p></div>
+    <div><h3>Banking &amp; delivery</h3><p>Temenos T24 core banking, Infinity digital banking, Model Bank, OpenShift migration, governance &amp; change control, Agile/Scrum, Jira, Confluence, MS Project, Tableau, Power BI, R, Stata</p></div>
+    <div><h3>Security &amp; certifications</h3><p>auditd, tcpdump, OWASP Juice Shop, Project Quarry, Zero Trust · AWS Cloud Practitioner · SnowPro Associate: Platform · Zscaler Zero Trust Cyber Associate · Temenos Implementation Methodology</p></div>
+  </div>
+  <p class="note" style="margin-top:20px">Education: MS Management Information Systems, University of Illinois Chicago (2025–2027, 3.86 GPA) · BS (Hons) Economics, Lahore University of Management Sciences (2019–2023)</p>
+</div></section>
+
+<section class="band" id="contact"><div class="wrap contact">
+  <div class="btns">
+    <a class="btn fill" href="mailto:khuzaimaalam56@gmail.com">khuzaimaalam56@gmail.com</a>
+    <a class="btn" href="https://linkedin.com/in/khuzaimaalam">LinkedIn</a>
+    <a class="btn" href="https://github.com/Khuzaimaalam2000">GitHub</a>
+  </div>
+</div></section>
+<footer><div class="wrap">© 2026 Khuzaima Alam · Chicago, IL</div></footer>
+
+<script>{
+const GH='https://github.com/Khuzaimaalam2000/';
+const projects=[
+ {feat:1,t:'Governed LLM operations: monitoring, A/B testing, drift and risk',repo:'ids568-final-project-kalam5',
+  tags:['Risk, Regulation & Responsible AI','AI & ML in Financial Services'],
+  d:'I built a FastAPI LLM server with dynamic batching and caching, then the controls a regulated firm would require before letting it near customers.',
+  pts:['Prometheus metrics and a Grafana dashboard covering latency, throughput, errors and cache rate','A/B experiment (EXP-001, simulated traffic, 500 requests per variant) with a power analysis, t-tests, a chi-square test and 95% confidence intervals','Drift detection with PSI across 8 production windows, which flagged prompt length as the leading indicator of degradation','Governance packet: model card, lineage diagram, a 20-item risk register, a JSON audit trail, a risk matrix and a CTO memo that flags 5 security gaps (auth, rate limiting, moderation, GDPR erasure, hallucination detection)'],
+  k:[['−67%','mean latency, A/B, p &lt; 0.001'],['+366%','throughput, optimized variant'],['2.4% → 0.2%','error rate'],['20','risks logged with mitigations']],
+  s:'Python · FastAPI · Prometheus · Grafana · SciPy · DistilGPT-2'},
+];
+const f1=[['Fused · Random Forest',0.880],['Agent-only · Random Forest',0.863],['Fused · XGBoost',0.858],['Agent-only · XGBoost',0.852],['Agent-only · Quarry rules',0.712],['System-only · Random Forest',0.645]];
+document.getElementById('f1').innerHTML=f1.map(([l,v],i)=>`<tr><td style="width:auto;font-weight:${i?400:600};padding:8px 12px 4px 0">${l}<div style="height:6px;background:var(--line);margin-top:6px"><div style="height:6px;width:${v*100}%;background:${i?'var(--ink)':'#2bbf74'}"></div></div></td><td class="n" style="font-size:16px;padding:8px 0 4px">${v.toFixed(3)}</td></tr>`).join('');
+const tag=t=>`<span class="tag jpm">${t}</span>`;
+document.getElementById('cards').innerHTML=projects.map(p=>{
+ const repo=p.repo||p.r;
+ const body=`<h3>${p.t}</h3><div class="tags">${p.tags.map(tag).join('')}</div><p>${p.d}</p><ul>${p.pts.map(x=>`<li>${x}</li>`).join('')}</ul><div class="stack-s">${p.s}</div><div class="links"><a href="${GH+repo}">Code on GitHub →</a></div>`;
+ return p.feat?`<article class="card feat"><div>${body}</div><div class="kpis">${p.k.map(([b,s])=>`<div class="kpi"><b>${b}</b><span>${s}</span></div>`).join('')}</div></article>`:`<article class="card">${body}</article>`;
+}).join('');
+
+const cases=[
+ {c:'Banque Misr UAE',w:'T24 core banking & Infinity digital banking',
+  ctx:'A full core banking and digital channel implementation, deployed on AWS. It was the first T24 core banking system on AWS cloud in the Middle East.',
+  did:['Ran project governance for the cloud deployment','Built and negotiated strategic change requests with the client','Managed C-level reporting and the approval workflow'],
+  out:[['$1.2M','change-request revenue'],['−30%','approval turnaround']]},
+ {c:'Banque Misr Djibouti & Somalia',w:'Core banking implementation',
+  ctx:"Two countries' operations needed to run on a single core banking environment.",
+  did:['Used T24 multi-company architecture to run operations across both countries in one environment','Introduced automated testing and continuous integration pipelines'],
+  out:[['45%','project profitability'],['98%','deployment success'],['20%','license cost savings']]},
+ {c:'Dukhan Bank, Qatar',w:'Model Bank implementation · 2,000 man-day customization',
+  ctx:"Systems Limited's first Qatar Model Bank implementation, delivered alongside McKinsey, Temenos and the bank's own teams.",
+  did:['Drove cross-functional coordination among the three parties','Optimized scheduling across 2,000 man-days of customization','Ran Agile retrospectives and set up a RACI so ownership was clear'],
+  out:[['−35%','implementation cycle time'],['+25%','team productivity']]},
+ {c:'Vietnam Prosperity Bank',w:'Temenos core banking modernization',
+  ctx:'Migrating the core banking platform from virtual machines to Red Hat OpenShift containers.',
+  did:['Delivered the VM-to-OpenShift migration','Took production through penetration testing at 150% load','Standardized the digital implementation process'],
+  out:[['8%','under budget'],['97%','QA pass rate'],['−22%','rework']]}
+];
+document.getElementById('cases').innerHTML=cases.map(x=>`<article class="card case"><small class="note">${x.w}</small><h3>${x.c}</h3><p>${x.ctx}</p><ul>${x.did.map(d=>`<li>${d}</li>`).join('')}</ul><div class="outs">${x.out.map(([b,l])=>`<div><b>${b}</b><span>${l}</span></div>`).join('')}</div></article>`).join('');
+
+const portfolio=[
+ ['+30%','operational efficiency','I streamlined coordination between cross-functional teams across several banking transformation programs.'],
+ ['+25%','resource utilization','Structured reporting raised utilization and cut approval turnaround by 30%.'],
+ ['25%','average project profitability','I achieved this through governance frameworks, strategic change requests and resource planning.']
+];
+document.getElementById('portfolio').innerHTML=portfolio.map(r=>`<div class="role"><div class="kpi" style="border:0;padding:0"><b>${r[0]}</b><span>${r[1]}</span></div><p style="margin-top:8px">${r[2]}</p></div>`).join('');
+
+const fintech=[
+ ['Product Manager','Paymo (fintech payments app) · Sep 2022–Jul 2023','I launched in-app event ticket payments, which drove 38% app adoption growth and a 24% revenue uplift in Q1. My go-to-market plan reached 70% user adoption in the first month, and data-driven roadmap prioritization raised customer retention by 25%.'],
+ ['Project Trainee, Tech Sales','Systems Limited · Jul–Sep 2022','I helped close a $40K statement of work for a collection module with Bank of Punjab, negotiated vendor contract revisions worth $200K a year in savings, and supported planning, budgeting and risk management for a $1.2M Temenos data lake in the MENA region.']
+];
+document.getElementById('fintech').innerHTML=fintech.map(r=>`<div class="role"><h3>${r[0]}</h3><small>${r[1]}</small><p>${r[2]}</p></div>`).join('');
+
+const roles=[
+ ['Client Solutions Specialist','UIC Learning Technology Solutions · Jan 2026–present','I work with more than 200 faculty to set up Canvas and Blackboard for 500+ courses, run training for 100+ instructors, and support exam technology used by 15,000+ students.'],
+ ['President, INFORMS UIC Chapter','May 2026–present','I lead a 100+ member analytics chapter, run competitions, speaker series and industry partnerships, and grew active membership by 30% in my first semester.']
+];
+document.getElementById('roles').innerHTML=roles.map(r=>`<div class="role"><h3>${r[0]}</h3><small>${r[1]}</small><p>${r[2]}</p></div>`).join('');
+
+const stages=[
+ ['Fintech','Paymo · product','+24% Q1 revenue'],
+ ['Core banking','Temenos T24','9 banks'],
+ ['Cloud banking','Banque Misr UAE','1st T24 on AWS, ME'],
+ ['Delivery','Governance','45% margin'],
+ ['AI governance','LLM ops capstone','−67% latency'],
+ ['AI security','Research','F1 0.880']
+];
+const s=document.querySelector('#pipe svg');
+const draw=()=>{
+ const W=s.clientWidth,H=s.clientHeight;if(!W||!H)return;
+ const narrow=W<460,n=stages.length,ink='#0a0a0a';
+ let out='';
+ if(!narrow){
+  const cols=3,rows=2,gx=W/cols,gy=H/rows,bw=Math.min(gx-26,190),bh=Math.min(gy-40,130);
+  const pos=stages.map((_,i)=>{const r=Math.floor(i/cols),c=r%2?cols-1-(i%cols):i%cols;return[c*gx+gx/2,r*gy+gy/2]});
+  for(let i=0;i<n-1;i++){const[a,b]=pos[i],[c,d]=pos[i+1];
+   const x1=a+(c>a?bw/2:c<a?-bw/2:0),y1=b+(d>b?bh/2:0),x2=c+(c>a?-bw/2-6:c<a?bw/2+6:0),y2=d+(d>b?-bh/2-6:0);
+   out+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${ink}" stroke-width="2" marker-end="url(#ar)"/>`}
+  stages.forEach((st,i)=>{const[x,y]=pos[i];out+=box(x-bw/2,y-bh/2,bw,bh,st,i)});
+ }else{
+  const bh=Math.min((H-(n-1)*14)/n,78),bw=W-8;
+  stages.forEach((st,i)=>{const y=i*(bh+14);out+=box(4,y,bw,bh,st,i,true);
+   if(i<n-1)out+=`<line x1="${W/2}" y1="${y+bh}" x2="${W/2}" y2="${y+bh+8}" stroke="${ink}" stroke-width="2" marker-end="url(#ar)"/>`});
+ }
+ s.innerHTML=`<defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="${ink}"/></marker></defs>`+out;
+};
+function box(x,y,w,h,st,i,row){
+ const hot=i===4||i===5,fill=hot?'#0a0a0a':'#ffffff',t=hot?'#b8f5d0':'#0a0a0a',m=hot?'#e6e6e6':'#444';
+ const shadow=`<rect x="${x+5}" y="${y+5}" width="${w}" height="${h}" fill="#0a0a0a" opacity=".18"/>`;
+ if(row)return shadow+`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="#0a0a0a" stroke-width="1.5"/>
+  <text x="${x+14}" y="${y+h/2-4}" font-family="Space Grotesk" font-weight="700" font-size="17" fill="${t}">${st[0]}</text>
+  <text x="${x+14}" y="${y+h/2+16}" font-family="Inter" font-size="13" fill="${m}">${st[1]}</text>
+  <text x="${x+w-14}" y="${y+h/2+6}" text-anchor="end" font-family="Space Grotesk" font-weight="700" font-size="17" fill="${t}">${st[2]}</text>`;
+ return shadow+`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="#0a0a0a" stroke-width="1.5"/>
+  <text x="${x+14}" y="${y+26}" font-family="Inter" font-size="13" fill="${m}">${String(i+1).padStart(2,'0')} · ${st[1]}</text>
+  <text x="${x+14}" y="${y+h/2+10}" font-family="Space Grotesk" font-weight="700" font-size="${Math.min(26,w/7)}" fill="${t}">${st[0]}</text>
+  <text x="${x+14}" y="${y+h-16}" font-family="Space Grotesk" font-weight="700" font-size="16" fill="${t}">${st[2]}</text>`;
+}
+const ro=new ResizeObserver(draw);ro.observe(s);
+if(document.fonts)document.fonts.ready.then(draw);
+}</script>
+</body>
+</html>
